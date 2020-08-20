@@ -11,10 +11,11 @@ pipeline {
         }
 
         stage('Start') {
+            agent none
             steps {
                 script {
-                    docker.run("5000:5000", "myimage")
-                    // sh 'docker run -d -p 5000:5000 myimage'
+                    // docker.run("5000:5000", "myimage")
+                    sh 'docker run -d -p 5000:5000 myimage'
                 }
             }
            
