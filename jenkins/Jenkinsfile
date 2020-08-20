@@ -18,6 +18,7 @@ pipeline {
                 }
             }
             steps {
+                sh 'docker docker build -t myimage .'
                 sh 'docker run -d -p 5000:5000 myimage'
             }
         }
