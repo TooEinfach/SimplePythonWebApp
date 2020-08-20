@@ -2,13 +2,10 @@ pipeline {
     agent none
     stages {
         stage('Build') {
-           node {
-                steps {
-                sh 'docker build -t myimage /home/pi/gitDirectory/SimplePythonWebApp/'
-                sh 'docker run -d -p 5000:5000 myimage'
-                }
+           script {
+               image = docker.build("${IMAGE}")
+               println "Newly generated image, " +image.id
            }
-           
         }
     }
 }
