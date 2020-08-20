@@ -4,7 +4,7 @@ pipeline {
         stage('Build') {
            steps {
             script {
-                image = docker.build("${IMAGE}")
+                image = docker.build("/home/pi/gitDirectory/SimplePythonWebApp")
                 println "Newly generated image, " +image.id
             }
            }
