@@ -10,5 +10,13 @@ pipeline {
            }
         }
 
+        stage('Start') {
+           steps {
+            script {
+                docker.run("myimage")
+            }
+           }
+        }
+
     }
 }
