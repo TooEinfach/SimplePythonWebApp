@@ -1,0 +1,20 @@
+pipeline {
+    agent none
+    stages {
+        stage('Build') {
+            agent {
+                docker {
+                    image 'python:2-alpine'
+                }
+            }
+            steps {
+                sh 'python -m py_compile src/app.py'
+            }
+        }
+        stage('Run'){
+            steps {
+                sh 'docker run -d -p 5000:5000 myimage'
+            }
+        }
+    }
+}
